@@ -82,7 +82,6 @@ TOPICS = {
 
     "misura_parte3": {
         "title": "9. Calcoli, Incertezze e Cifre Significative",
-        "hidden": True,
         "explanation": "👶 <b>1. Incertezza relativa:</b> Quanto è grande lo sbaglietto rispetto alla misura (1 cm su 100 è poco, su 2 è tanto!).<br>🎓 <i>Liceo:</i> Δx/x₀ (adimensionale) o in percentuale. Serve a confrontare misure diverse.<br><br>👶 <b>2. Incertezza statica:</b> Dipende da quanto è 'bravo' lo strumento.<br>🎓 <i>Liceo:</i> Incertezza intrinseca dello strumento (tolleranze di fabbrica).<br><br>👶 <b>3. Misure indirette:</b> Se calcoli l'area, gli sbaglietti dei lati si sommano.<br>🎓 <i>Liceo:</i> Propagazione degli errori. Somme: si sommano le incertezze assolute. Prodotti: si sommano quelle relative. Potenze: si moltiplica per l'esponente.<br><br>👶 <b>4. Cifre significative:</b> Non inventarti numeri più precisi di quelli che hai misurato!<br>🎓 <i>Liceo:</i> Somme: stesso numero di decimali. Moltiplicazioni: stesso numero di cifre significative. Zeri iniziali non contano (0,0032 = 2 cifre).",
         "question": "Se devi sommare due misure, come gestisci le cifre decimali nel risultato?",
         "options": ["Metto tutti i decimali della calcolatrice", "Uso lo stesso numero di decimali della misura che ne ha meno", "Uso lo stesso numero di cifre significative", "Arrotondo sempre all'intero"],
