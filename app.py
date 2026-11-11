@@ -15,10 +15,10 @@ TOPICS = {
     
     "sistema_si": {
         "title": "2. Il Sistema Internazionale (SI)",
-        "explanation": "👶 <b>Versione Bambino:</b> Il SI è il 'linguaggio comune' degli scienziati di tutto il mondo. Ci sono 7 'mattoncini' di base (grandezze fondamentali) e tutte le altre (derivate) sono costruite con questi.<br><br>🎓 <b>Versione Liceo:</b> Il SI si basa su 7 grandezze fondamentali indipendenti: Lunghezza (m), Massa (kg), Tempo (s), Temperatura (K), Corrente elettrica (A), Quantità di sostanza (mol), Intensità luminosa (cd). Le grandezze derivate si ottengono moltiplicando o dividendo quelle fondamentali.<br><br>📏 <i>Esempi Derivate:</i> Area (m²), Volume (m³), Velocità (m/s), Forza (Newton).",
+        "explanation": "👶 <b>Versione Bambino:</b> Il SI è il 'linguaggio comune' degli scienziati di tutto il mondo. Ci sono 4 'mattoncini' di base (grandezze fondamentali) e tutte le altre (derivate) sono costruite con questi.<br><br>🎓 <b>Versione Liceo:</b> Il SI si basa su 4 grandezze fondamentali indipendenti: Lunghezza (m), Massa (kg), Tempo (s), Temperatura (K), Corrente elettrica (A), Quantità di sostanza (mol), Intensità luminosa (cd). Le grandezze derivate si ottengono moltiplicando o dividendo quelle fondamentali.<br><br>📏 <i>Esempi Derivate:</i> Area (m²), Volume (m³), Velocità (m/s), Forza (Newton).",
         "question": "Quante sono le grandezze fondamentali nel Sistema Internazionale?",
-        "options": ["3", "7", "10", "100"],
-        "answer": "7",
+        "options": ["3", "4", "10", "100"],
+        "answer": "4",
         "feedback": "Il SI si basa su 7 grandezze fondamentali (lunghezza, massa, tempo, temperatura, corrente, quantità di sostanza e intensità luminosa)."
     },
     
@@ -36,7 +36,7 @@ TOPICS = {
         "hidden": True,
         "explanation": "<b>Ecco la tabella completa dei prefissi SI:</b><br><br><table style='width:100%; border-collapse: collapse; margin-top: 15px; color: white;'> <tr style='border-bottom: 2px solid #ff69b4;'><th style='padding: 8px; text-align: left;'>Prefisso</th><th style='padding: 8px; text-align: left;'>Simbolo</th><th style='padding: 8px; text-align: left;'>Fattore</th></tr> <tr style='border-bottom: 1px solid rgba(255,255,255,0.2);'><td style='padding: 8px;'>giga</td><td style='padding: 8px;'>G</td><td style='padding: 8px;'>10⁹</td></tr> <tr style='border-bottom: 1px solid rgba(255,255,255,0.2);'><td style='padding: 8px;'>mega</td><td style='padding: 8px;'>M</td><td style='padding: 8px;'>10⁶</td></tr> <tr style='border-bottom: 1px solid rgba(255,255,255,0.2);'><td style='padding: 8px;'>kilo</td><td style='padding: 8px;'>k</td><td style='padding: 8px;'>10³</td></tr> <tr style='border-bottom: 1px solid rgba(255,255,255,0.2);'><td style='padding: 8px;'>etto</td><td style='padding: 8px;'>h</td><td style='padding: 8px;'>10²</td></tr> <tr style='border-bottom: 1px solid rgba(255,255,255,0.2);'><td style='padding: 8px;'>deca</td><td style='padding: 8px;'>da</td><td style='padding: 8px;'>10¹</td></tr> <tr style='border-bottom: 1px solid rgba(255,255,255,0.2);'><td style='padding: 8px;'>deci</td><td style='padding: 8px;'>d</td><td style='padding: 8px;'>10⁻¹</td></tr> <tr style='border-bottom: 1px solid rgba(255,255,255,0.2);'><td style='padding: 8px;'>centi</td><td style='padding: 8px;'>c</td><td style='padding: 8px;'>10⁻²</td></tr> <tr style='border-bottom: 1px solid rgba(255,255,255,0.2);'><td style='padding: 8px;'>milli</td><td style='padding: 8px;'>m</td><td style='padding: 8px;'>10⁻³</td></tr> <tr style='border-bottom: 1px solid rgba(255,255,255,0.2);'><td style='padding: 8px;'>micro</td><td style='padding: 8px;'>µ</td><td style='padding: 8px;'>10⁻⁶</td></tr> <tr style='border-bottom: 1px solid rgba(255,255,255,0.2);'><td style='padding: 8px;'>nano</td><td style='padding: 8px;'>n</td><td style='padding: 8px;'>10⁻⁹</td></tr> </table><br><br><b>Ora che hai visto la tabella, mettiti alla prova con il quiz!</b>",
         "question": "Come si scrive 5000 in notazione scientifica?",
-        "options": ["5 × 10³", "50 × 10²", "5 × 10²", "0,5 × 10⁴"],
+        "options": ["5 × 10²", "50 × 10²", "5 × 10³", "0,5 × 10⁴"],
         "answer": "5 × 10³",
         "feedback": "In notazione scientifica, il numero prima della virgola (o della moltiplicazione) deve essere compreso tra 1 e 10. Quindi 5000 diventa 5 × 10³."
     },
@@ -45,7 +45,7 @@ TOPICS = {
         "title": "4. Le Equivalenze",
         "explanation": "👶 <b>Versione Bambino:</b> Cambiare unità di misura senza cambiare la quantità. 1 metro = 100 centimetri: è sempre la stessa lunghezza!<br><br>🎓 <b>Versione Liceo:</b> Un'equivalenza è una conversione tra unità omogenee che conserva il valore della grandezza. Si opera moltiplicando per un fattore di conversione unitario.<br><br>📐 <i>Esempio:</i> 2,5 m = 2,5 × 10² cm = 250 cm.<br><br>💼 <i>Esempio Economico:</i> Convertire euro in dollari è un'equivalenza: cambia l'unità, non il valore reale (a parità di cambio).",
         "question": "Quanti metri ci sono in 350 centimetri?",
-        "options": ["3,5 m", "35 m", "0,35 m", "3500 m"],
+        "options": ["3500 m", "35 m", "0,35 m", "3,5 m"],
         "answer": "3,5 m",
         "feedback": "Per passare da centimetri a metri, devi dividere per 100. Quindi 350 cm ÷ 100 = 3,5 m."
     },
@@ -63,27 +63,27 @@ TOPICS = {
         "title": "6. Le Grandezze Derivate (Spiegate)",
         "explanation": "👶 <b>Versione Bambino:</b> Sono grandezze che si costruiscono combinando insieme quelle fondamentali. <br>• Area (superficie) <br>• Volume (spazio occupato) <br>• Velocità (rapidità di spostamento) <br>• Forza (spingere un carrello) <br>• Densità (quanto è compatto, es. ferro vs cotone) <br>• Pressione (forza su una superficie)<br><br>🎓 <b>Versione Liceo:</b> Derivano da prodotti/rapporti di grandezze fondamentali. <br>Area (m²), Volume (m³), Velocità (m/s), Accelerazione (m/s²), Forza (N = kg·m/s²), Peso (N), Densità (kg/m³), Pressione (Pa), Lavoro/Energia (J), Potenza (W).<br><br>💼 <i>Esempio Economico:</i> La densità abitativa (abitanti/km²) è una densità. Il PIL pro capite è un rapporto tra grandezze. La fisica fornisce il linguaggio della misura usato anche in economia!",
         "question": "La velocità (m/s) è una grandezza...",
-        "options": ["Fondamentale", "Derivata", "Economica", "Immaginaria"],
+        "options": ["Fondamentale", "Economica", "Derivata", "Immaginaria"],
         "answer": "Derivata",
         "feedback": "La velocità è una grandezza DERIVATA, perché si ottiene combinando due grandezze fondamentali: lo spazio (m) diviso il tempo (s)."
     },
 
     "misura_parte1": {
-        "title": "7a. Strumenti e Tipi di Misura",
-        "explanation": "👶 <b>1.2. Strumenti:</b> Alcuni hanno la lancetta (analogici), altri i numeri (digitali). Tutti e due misurano!<br>🎓 <i>Liceo:</i> Analogici usano scala graduata (errore di lettura); digitali usano display (errore di quantizzazione).<br><br>👶 <b>2. Portata:</b> È il valore massimo. Se la bilancia arriva a 100 kg, non pesi un camion!<br>🎓 <i>Liceo:</i> Fondo scala, il massimo misurabile senza danni.<br><br>👶 <b>3. Sensibilità:</b> Quanto piccolo è il salto che vede. Se segna solo i kg, non vede 100 g.<br>🎓 <i>Liceo:</i> Minima variazione distinguibile (risoluzione).<br><br>👶 <b>4. Prontezza:</b> Quanto in fretta risponde.<br>🎓 <i>Liceo:</i> Tempo di risposta per una lettura stabile.<br><br>👶 <b>5. Misure indirette:</b> Misuri i lati del tavolo e li moltiplichi per l'area.<br>🎓 <i>Liceo:</i> Calcolo tramite relazione matematica (es. v = s/t). L'incertezza si propaga.",
+        "title": "7. Strumenti e Tipi di Misura",
+        "explanation": "👶 <b>1. Strumenti:</b> Alcuni hanno la lancetta (analogici), altri i numeri (digitali). Tutti e due misurano!<br>🎓 <i>Liceo:</i> Analogici usano scala graduata (errore di lettura); digitali usano display (errore di quantizzazione).<br><br>👶 <b>2. Portata:</b> È il valore massimo. Se la bilancia arriva a 100 kg, non pesi un camion!<br>🎓 <i>Liceo:</i> Fondo scala, il massimo misurabile senza danni.<br><br>👶 <b>3. Sensibilità:</b> Quanto piccolo è il salto che vede. Se segna solo i kg, non vede 100 g.<br>🎓 <i>Liceo:</i> Minima variazione distinguibile (risoluzione).<br><br>👶 <b>4. Prontezza:</b> Quanto in fretta risponde.<br>🎓 <i>Liceo:</i> Tempo di risposta per una lettura stabile.<br><br>👶 <b>5. Misure indirette:</b> Misuri i lati del tavolo e li moltiplichi per l'area.<br>🎓 <i>Liceo:</i> Calcolo tramite relazione matematica (es. v = s/t). L'incertezza si propaga.",
         "question": "Qual è la differenza principale tra uno strumento analogico e uno digitale?",
-        "options": ["L'analogico usa una scala graduata, il digitale mostra i numeri", "L'analogico è sempre più preciso", "Il digitale non si può usare in fisica", "L'analogico non ha errori di misura"],
+        "options": ["L'analogico è sempre più preciso", "L'analogico usa una scala graduata, il digitale mostra i numeri", "Il digitale non si può usare in fisica", "L'analogico non ha errori di misura"],
         "answer": "L'analogico usa una scala graduata, il digitale mostra i numeri",
         "feedback": "Gli strumenti analogici (come il termometro a mercurio o l'orologio con le lancette) richiedono che tu legga la scala. I digitali (come il cronometro del telefono) ti danno il numero direttamente sullo schermo.",
         "next_topic": "misura_parte2"
     },
 
     "misura_parte2": {
-        "title": "7b. Gli Errori di Misura",
+        "title": "8. Gli Errori di Misura",
         "hidden": True,
         "explanation": "👶 <b>1. Errori:</b> Nessuna misura è perfetta, c'è sempre uno 'sbaglietto'.<br>🎓 <i>Liceo:</i> Si dividono in sistematici e casuali.<br><br>👶 <b>1.1 Sistematici:</b> Sbagliano sempre dalla stessa parte (bilancia +1kg).<br>🎓 <i>Liceo:</i> Spostano tutte le misure nella stessa direzione. Non si riducono ripetendo; si tara lo strumento.<br><br>👶 <b>1.2 Casuali:</b> Cambiano ogni volta (come lanciare i dadi).<br>🎓 <i>Liceo:</i> Oscillano attorno al valore vero. Si riducono con la media di più misure.<br><br>👶 <b>2. Incertezza:</b> È il 'più o meno' (10 cm ± 1 cm).<br>🎓 <i>Liceo:</i> Indica l'intervallo di fiducia. Per una misura singola è metà della sensibilità (analogico) o l'ultima cifra (digitale). Con più misure si usa la deviazione standard.<br><br>👶 <b>3. Precisione vs Accuratezza:</b> Precisione = frecce vicine tra loro. Accuratezza = frecce vicine al centro.<br>🎓 <i>Liceo:</i> Precisione = dispersione (errori casuali). Accuratezza = vicinanza al vero (errori sistematici).",
         "question": "Se una bilancia segna sempre 1 kg in più, che tipo di errore è?",
-        "options": ["Errore casuale", "Errore sistematico", "Errore di precisione", "Nessun errore"],
+        "options": ["Errore sistematico", "Errore casuale", "Errore di precisione", "Nessun errore"],
         "answer": "Errore sistematico",
         "feedback": "Sbaglia sempre nella stessa direzione e della stessa quantità! Questo è un errore sistematico. Non si risolve ripetendo la misura, ma tarando (aggiustando) la bilancia.",
         "next_topic": "misura_parte3"
