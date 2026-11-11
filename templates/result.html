@@ -1,32 +1,3 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Risultato</title>
-    <style>
-        body { 
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
-            margin: 0;
-            padding: 40px 20px;
-            background-image: url('/static/bg.result.jpg');
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
-            color: white;
-        }
-        .container {
-            max-width: 600px; 
-            margin: 0 auto; 
-            background: rgba(15, 10, 20, 0.85);
-            padding: 30px;
-            border-radius: 15px;
-            border: 1px solid rgba(255, 105, 180, 0.3);
-            box-shadow: 0 0 20px rgba(255, 105, 180, 0.2);
-            text-align: center;
-        }
-        a { color: #ff69b4; text-decoration: none; font-weight: bold; }
-    </style>
-</head>
-<body>
     <div class="container">
         {% if correct %}
             <h1>✅ Corretto!</h1>
@@ -34,10 +5,23 @@
             <h1>❌ Non proprio.</h1>
             <p>Hai risposto: <strong>{{ chosen }}</strong></p>
             <p>La risposta corretta è: <strong>{{ topic.answer }}</strong></p>
+            
+            <!-- QUI MOSTRIAMO LA SPIEGAZIONE SE HANNO SBAGLIATO -->
+            {% if topic.feedback %}
+                <div style="background: rgba(255, 105, 180, 0.15); border-left: 4px solid #ff69b4; padding: 15px; margin-top: 20px; text-align: left; border-radius: 5px;">
+                    <strong>💡 Perché è sbagliato?</strong><br>
+                    {{ topic.feedback }}
+                </div>
+            {% endif %}
+            
         {% endif %}
 
         <br>
-        <p><a href="/topic/{{ topic_id }}">Riprova</a> · <a href="/">Tutti gli argomenti</a></p>
+        <!-- SE C'È UNA PAGINA SUCCESSIVA, MOSTRA IL PULSANTE PER ANDARE AVANTI -->
+        {% if topic.next_topic %}
+            <a href="/topic/{{ topic.next_topic }}" class="btn-prosegui">Vai alla prossima parte →</a>
+        {% else %}
+            <!-- SE È L'ULTIMA PAGINA, TORNA AGLI ARGOMENTI -->
+            <p><a href="/topic/{{ topic_id }}">Riprova</a> · <a href="/">Tutti gli argomenti</a></p>
+        {% endif %}
     </div>
-</body>
-</html>
