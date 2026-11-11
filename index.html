@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Aiuto Fisica</title>
+    <style>
+        /* This applies the background image to the whole page */
+        body { 
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+            margin: 0;
+            padding: 40px 20px;
+            background-image: url('/static/bg-home.jpg');
+            background-size: cover; /* Makes the image fill the screen */
+            background-position: center;
+            background-attachment: fixed; /* Keeps the image still when scrolling */
+            color: white; /* Makes text white */
+        }
+
+        /* This creates the dark glass box in the middle */
+        .container {
+            max-width: 600px; 
+            margin: 0 auto; 
+            background: rgba(15, 10, 20, 0.85); /* Dark purple/black, 85% opaque */
+            padding: 30px;
+            border-radius: 15px;
+            border: 1px solid rgba(255, 105, 180, 0.3); /* A subtle pink border */
+            box-shadow: 0 0 20px rgba(255, 105, 180, 0.2); /* A soft pink glow */
+        }
+
+        a { color: #ff69b4; text-decoration: none; font-weight: bold; } /* Pink links */
+        a:hover { text-decoration: underline; }
+        ul { list-style-type: none; padding: 0; }
+        li { margin-bottom: 15px; background: rgba(255,255,255,0.1); padding: 15px; border-radius: 8px; }
+        li a { font-size: 1.2em; display: block; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Aiuto Fisica</h1>
+        <p>Scegli un argomento:</p>
+                <ul>
+            {% for id, t in topics.items() %}
+                {% if not t.hidden %}
+                    <li><a href="/topic/{{ id }}">→ {{ t.title }}</a></li>
+                {% endif %}
+            {% endfor %}
+        </ul>
+    </div>
+</body>
+</html>
