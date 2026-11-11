@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Risultato</title>
+    <style>
+        body { 
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+            margin: 0;
+            padding: 40px 20px;
+            background-image: url('/static/bg-result.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: white;
+        }
+        .container {
+            max-width: 600px; 
+            margin: 0 auto; 
+            background: rgba(15, 10, 20, 0.85);
+            padding: 30px;
+            border-radius: 15px;
+            border: 1px solid rgba(255, 105, 180, 0.3);
+            box-shadow: 0 0 20px rgba(255, 105, 180, 0.2);
+            text-align: center;
+        }
+        a { color: #ff69b4; text-decoration: none; font-weight: bold; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        {% if correct %}
+            <h1>✅ Corretto!</h1>
+        {% else %}
+            <h1>❌ Non proprio.</h1>
+            <p>Hai risposto: <strong>{{ chosen }}</strong></p>
+            <p>La risposta corretta è: <strong>{{ topic.answer }}</strong></p>
+        {% endif %}
+
+        <br>
+        <p><a href="/topic/{{ topic_id }}">Riprova</a> · <a href="/">Tutti gli argomenti</a></p>
+    </div>
+</body>
+</html>

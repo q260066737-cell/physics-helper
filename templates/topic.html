@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{ topic.title }}</title>
+    <style>
+        body { 
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+            margin: 0;
+            padding: 40px 20px;
+            background-image: url('/static/bg-topic.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: white;
+        }
+        .container {
+            max-width: 600px; 
+            margin: 0 auto; 
+            background: rgba(15, 10, 20, 0.85);
+            padding: 30px;
+            border-radius: 15px;
+            border: 1px solid rgba(255, 105, 180, 0.3);
+            box-shadow: 0 0 20px rgba(255, 105, 180, 0.2);
+        }
+        .explanation { 
+            background: rgba(255, 255, 255, 0.1); 
+            padding: 20px; 
+            border-radius: 8px; 
+            line-height: 1.6;
+        }
+        a { color: #ff69b4; text-decoration: none; }
+        button {
+            background-color: #ff69b4; color: white; border: none; 
+            padding: 10px 20px; border-radius: 5px; cursor: pointer; font-size: 1em;
+        }
+        button:hover { background-color: #ff1493; }
+        label { display: block; margin: 10px 0; cursor: pointer; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>{{ topic.title }}</h1>
+        <div class="explanation">
+            <p>{{ topic.explanation | safe }}</p>
+        </div>
+
+        <h2>Quiz</h2>
+        <form action="/check" method="POST">
+            <input type="hidden" name="topic_id" value="{{ topic_id }}">
+            <p>{{ topic.question }}</p>
+            {% for option in topic.options %}
+                <label>
+                    <input type="radio" name="answer" value="{{ option }}" required>
+                    {{ option }}
+                </label>
+            {% endfor %}
+            <br><br>
+            <button type="submit">Controlla risposta</button>
+        </form>
+
+        <p><a href="/">← Torna agli argomenti</a></p>
+    </div>
+</body>
+</html>
