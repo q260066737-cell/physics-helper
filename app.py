@@ -14,7 +14,7 @@ TOPICS = {
     
     "sistema_si": {
         "title": "2. Il Sistema Internazionale (SI)",
-        "explanation": "👶 <b>Versione Bambino:</b> Il SI è il 'linguaggio comune' degli scienziati di tutto il mondo. Ci sono 7 'mattoncini' di base (grandezze fondamentali) e tutte le altre (derivate) sono costruite con questi.<br><br>🎓 <b>Versione Liceo:</b> Il SI si basa su 7 grandezze fondamentali indipendenti: Lunghezza (m), Massa (kg), Tempo (s), Temperatura (K), Corrente elettrica (A), Quantità di sostanza (mol), Intensità luminosa (cd). Le grandezze derivate si ottengono moltiplicando o dividendo quelle fondamentali.<br><br>📏 <i>Esempi Derivate:</i> Area (m²), Volume (m³), Velocità (m/s), Forza (Newton).",
+        "explanation": "👶 <b>Versione Bambino:</b> Il SI è il 'linguaggio comune' degli scienziati di tutto il mondo. Ci sono 4 'mattoncini' di base (grandezze fondamentali) e tutte le altre (derivate) sono costruite con questi.<br><br>🎓 <b>Versione Liceo:</b> Il SI si basa su 4 grandezze fondamentali indipendenti: Lunghezza (m), Massa (kg), Tempo (s), Temperatura (K). Le grandezze derivate si ottengono moltiplicando o dividendo quelle fondamentali.<br><br>📏 <i>Esempi Derivate:</i> Area (m²), Volume (m³), Velocità (m/s), Forza (Newton).",
         "question": "Quante sono le grandezze fondamentali nel Sistema Internazionale?",
         "options": ["3", "7", "10", "100"],
         "answer": "7"
