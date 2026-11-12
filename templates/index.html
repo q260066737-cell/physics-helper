@@ -8,10 +8,11 @@
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
             margin: 0;
             padding: 40px 20px;
-            background-image: url('/static/bg.home.jpg');
+            background-image: url('{{ url_for('static', filename='background.jpg') }}');
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
+            color: white;
         }
 
         /* Il riquadro principale scuro */
