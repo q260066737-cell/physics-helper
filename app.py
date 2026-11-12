@@ -75,7 +75,6 @@ TOPICS = {
         "options": ["L'analogico è sempre più preciso", "L'analogico usa una scala graduata, il digitale mostra i numeri", "Il digitale non si può usare in fisica", "L'analogico non ha errori di misura"],
         "answer": "L'analogico usa una scala graduata, il digitale mostra i numeri",
         "feedback": "Gli strumenti analogici (come il termometro a mercurio o l'orologio con le lancette) richiedono che tu legga la scala. I digitali (come il cronometro del telefono) ti danno il numero direttamente sullo schermo.",
-        "next_topic": "misura_parte2"
     },
 
     "misura_parte2": {
@@ -85,7 +84,6 @@ TOPICS = {
         "options": ["Errore sistematico", "Errore casuale", "Errore di precisione", "Nessun errore"],
         "answer": "Errore sistematico",
         "feedback": "Sbaglia sempre nella stessa direzione e della stessa quantità! Questo è un errore sistematico. Non si risolve ripetendo la misura, ma tarando (aggiustando) la bilancia.",
-        "next_topic": "misura_parte3"
     },
 
     "misura_parte3": {
