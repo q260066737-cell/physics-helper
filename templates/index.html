@@ -102,16 +102,8 @@
 </head>
 <body>
     <div class="container">
-        
-        <!-- BARRA UTENTE CON LOGOUT E LINK AGLI ERRORI -->
-            <hr style="border-color: rgba(255,105,180,0.3); margin-top: 30px;">
-        <div style="text-align: center; margin-top: 20px;">
-            <p>Sei loggato come: <b>{{ current_user.username }}</b></p>
-            <a href="/errori" style="margin-right: 15px;">📚 La mia raccolta di errori</a>
-            <a href="/logout">Esci</a>
-        </div>
 
-        <!-- MESSAGGI DI ERRORE (es. password sbagliata) -->
+        <!-- MESSAGGI DI ERRORE (es. password sbagliata) - Messi in alto per non coprire i tasti -->
         {% with messages = get_flashed_messages() %}
             {% if messages %}
                 {% for message in messages %}
@@ -166,6 +158,14 @@
                     {% endif %}
                 {% endfor %}
             </ul>
+        </div>
+
+        <!-- BARRA UTENTE IN FONDO CON LOGOUT E LINK AGLI ERRORI -->
+        <hr style="border-color: rgba(255,105,180,0.3); margin-top: 30px;">
+        <div style="text-align: center; margin-top: 20px;">
+            <p>Sei loggato come: <b>{{ current_user.username }}</b></p>
+            <a href="/errori" style="margin-right: 15px;">📚 La mia raccolta di errori</a>
+            <a href="/logout">Esci</a>
         </div>
 
     </div>
