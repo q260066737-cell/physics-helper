@@ -1,8 +1,35 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, redirect, url_for, flash
+from flask_sqlalchemy import SQLAlchemy
+from flask_login import LoginManager, UserMixin, login_user, login_required, logout_user, current_user
 import os
 
 app = Flask(__name__)
+app.config['SECRET_KEY'] = 'una-chiave-segreta-molto-sicura-per-la-tua-app'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database.db'
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
+db = SQLAlchemy(app)
+login_manager = LoginManager()
+login_manager.init_app(app)
+login_manager.login_view = 'login'
+
+# --- MODELLI DEL DATABASE ---
+class User(UserMixin, db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    username = db.Column(db.String(150), unique=True, nullable=False)
+    password = db.Column(db.String(150), nullable=False)
+
+class Errore(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
+    topic_id = db.Column(db.String(50), nullable=False)
+    titolo_lezione = db.Column(db.String(200), nullable=False)
+
+@login_manager.user_loader
+def load_user(user_id):
+    return User.query.get(int(user_id))
+
+# --- I TUOI ARGOMENTI (TOPICS) ---
 TOPICS = {
     "leggi_e_grandezze": {
         "title": "1. Leggi e Grandezze Fisiche",
@@ -15,10 +42,10 @@ TOPICS = {
     
     "sistema_si": {
         "title": "2. Il Sistema Internazionale (SI)",
-        "explanation": "👶 <b>Versione Bambino:</b> Il SI è il 'linguaggio comune' degli scienziati di tutto il mondo. Ci sono 4 'mattoncini' di base (grandezze fondamentali) e tutte le altre (derivate) sono costruite con questi.<br><br>🎓 <b>Versione Liceo:</b> Il SI si basa su 4 grandezze fondamentali indipendenti: Lunghezza (m), Massa (kg), Tempo (s), Temperatura (K), Corrente elettrica (A), Quantità di sostanza (mol), Intensità luminosa (cd). Le grandezze derivate si ottengono moltiplicando o dividendo quelle fondamentali.<br><br>📏 <i>Esempi Derivate:</i> Area (m²), Volume (m³), Velocità (m/s), Forza (Newton).",
+        "explanation": "👶 <b>Versione Bambino:</b> Il SI è il 'linguaggio comune' degli scienziati di tutto il mondo. Ci sono 7 'mattoncini' di base (grandezze fondamentali) e tutte le altre (derivate) sono costruite con questi.<br><br>🎓 <b>Versione Liceo:</b> Il SI si basa su 7 grandezze fondamentali indipendenti: Lunghezza (m), Massa (kg), Tempo (s), Temperatura (K), Corrente elettrica (A), Quantità di sostanza (mol), Intensità luminosa (cd). Le grandezze derivate si ottengono moltiplicando o dividendo quelle fondamentali.<br><br>📏 <i>Esempi Derivate:</i> Area (m²), Volume (m³), Velocità (m/s), Forza (Newton).",
         "question": "Quante sono le grandezze fondamentali nel Sistema Internazionale?",
-        "options": ["3", "4", "10", "100"],
-        "answer": "4",
+        "options": ["3", "7", "10", "100"],
+        "answer": "7",
         "feedback": "Il SI si basa su 7 grandezze fondamentali (lunghezza, massa, tempo, temperatura, corrente, quantità di sostanza e intensità luminosa)."
     },
     
@@ -52,7 +79,7 @@ TOPICS = {
 
     "grandezze_fondamentali": {
         "title": "5. Le Grandezze Fondamentali (Spiegate)",
-        "explanation": "👶 <b>Versione Bambino:</b> Sono le 4 cose base che possiamo misurare. <br>1. Lunghezza (quanto è lungo). <br>2. Massa (quanta 'roba' c'è dentro). <br>3. Tempo (quanto dura). <br>4. Temperatura (quanto è caldo/freddo). <br><br>🎓 <b>Versione Liceo:</b> Ognuna ha un simbolo e un'unità SI: Lunghezza (l, m), Massa (m, kg), Tempo (t, s), Temperatura (T, K).<br><br>💡 <i>Nota:</i> La Massa (kg) non è il Peso! La massa è la quantità di materia, il peso è una forza (si misura in Newton).",
+        "explanation": "👶 <b>Versione Bambino:</b> Sono le 7 cose base che possiamo misurare. <br>1. Lunghezza (quanto è lungo). <br>2. Massa (quanta 'roba' c'è dentro). <br>3. Tempo (quanto dura). <br>4. Temperatura (quanto è caldo/freddo). <br>5. Corrente elettrica. <br>6. Quantità di sostanza. <br>7. Intensità luminosa.<br><br>🎓 <b>Versione Liceo:</b> Ognuna ha un simbolo e un'unità SI: Lunghezza (l, m), Massa (m, kg), Tempo (t, s), Temperatura (T, K), Corrente (I, A), Quantità di sostanza (n, mol), Intensità luminosa (Iv, cd).<br><br>💡 <i>Nota:</i> La Massa (kg) non è il Peso! La massa è la quantità di materia, il peso è una forza (si misura in Newton).",
         "question": "Qual è la differenza tra Massa e Peso?",
         "options": ["Sono la stessa identica cosa", "La massa si misura in kg, il peso è una forza e si misura in Newton", "La massa si misura in metri, il peso in kg", "Il peso è la quantità di materia"],
         "answer": "La massa si misura in kg, il peso è una forza e si misura in Newton",
@@ -96,11 +123,50 @@ TOPICS = {
     }
 }
 
+# --- ROTTE PER IL LOGIN E LA REGISTRAZIONE ---
+@app.route('/login', methods=['GET', 'POST'])
+def login():
+    if request.method == 'POST':
+        username = request.form['username']
+        password = request.form['password']
+        user = User.query.filter_by(username=username).first()
+        if user and user.password == password:
+            login_user(user)
+            return redirect(url_for('home'))
+        else:
+            flash('Nome utente o password sbagliati.')
+    return render_template('login.html')
+
+@app.route('/register', methods=['GET', 'POST'])
+def register():
+    if request.method == 'POST':
+        username = request.form['username']
+        password = request.form['password']
+        user_exists = User.query.filter_by(username=username).first()
+        if user_exists:
+            flash('Questo nome utente esiste già.')
+        else:
+            new_user = User(username=username, password=password)
+            db.session.add(new_user)
+            db.session.commit()
+            login_user(new_user)
+            return redirect(url_for('home'))
+    return render_template('register.html')
+
+@app.route('/logout')
+@login_required
+def logout():
+    logout_user()
+    return redirect(url_for('login')) # Ti rimanda alla pagina di login dopo l'uscita
+
+# --- ROTTE PRINCIPALI ---
 @app.route("/")
+@login_required # Questa riga protegge la home: se non sei loggato, ti manda al login
 def home():
     return render_template("index.html", topics=TOPICS)
 
 @app.route("/topic/<topic_id>")
+@login_required
 def topic(topic_id):
     topic_data = TOPICS.get(topic_id)
     if not topic_data:
@@ -108,12 +174,31 @@ def topic(topic_id):
     return render_template("topic.html", topic=topic_data, topic_id=topic_id)
 
 @app.route("/check", methods=["POST"])
+@login_required
 def check():
     topic_id = request.form["topic_id"]
     chosen = request.form["answer"]
     topic_data = TOPICS[topic_id]
     correct = (chosen == topic_data["answer"])
+    
+    # Se la risposta è sbagliata, salva l'errore nel database
+    if not correct:
+        nuovo_errore = Errore(user_id=current_user.id, topic_id=topic_id, titolo_lezione=topic_data["title"])
+        db.session.add(nuovo_errore)
+        db.session.commit()
+
     return render_template("result.html", correct=correct, chosen=chosen, topic=topic_data, topic_id=topic_id)
+
+# --- ROTTA PER LA RACCOLTA ERRORI ---
+@app.route("/errori")
+@login_required
+def errori():
+    miei_errori = Errore.query.filter_by(user_id=current_user.id).all()
+    return render_template("errori.html", errori=miei_errori)
+
+# Creazione del database all'avvio
+with app.app_context():
+    db.create_all()
 
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 5000))
