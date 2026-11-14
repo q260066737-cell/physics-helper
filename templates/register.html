@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Registrati - Aiuto Fisica</title>
+    <style>
+        body { font-family: 'Segoe UI', sans-serif; background-image: url('{{ url_for('static', filename='background.jpg') }}'); background-size: cover; color: white; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; }
+        .box { background: rgba(15, 10, 20, 0.9); padding: 40px; border-radius: 15px; text-align: center; border: 1px solid #ff69b4; width: 300px; }
+        input { width: 90%; padding: 10px; margin: 10px 0; border-radius: 5px; border: none; }
+        button { background: #ff69b4; color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; font-weight: bold; width: 100%; }
+        a { color: #ff69b4; text-decoration: none; display: block; margin-top: 15px; }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <h2>Crea un Account</h2>
+        <form method="POST">
+            <input type="text" name="username" placeholder="Scegli un nome utente" required><br>
+            <input type="password" name="password" placeholder="Scegli una password" required><br>
+            <button type="submit">Registrati</button>
+        </form>
+        <a href="/login">Hai già un account? Accedi</a>
+    </div>
+</body>
+</html>
