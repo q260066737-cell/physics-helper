@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>I Miei Errori</title>
+    <style>
+        body { font-family: 'Segoe UI', sans-serif; background-image: url('{{ url_for('static', filename='background.jpg') }}'); background-size: cover; color: white; padding: 40px; margin: 0;}
+        .container { max-width: 600px; margin: 0 auto; background: rgba(15, 10, 20, 0.9); padding: 30px; border-radius: 15px; border: 1px solid #ff69b4; }
+        ul { list-style-type: none; padding: 0; }
+        li { background: rgba(255,255,255,0.1); padding: 15px; margin-bottom: 10px; border-radius: 8px; border-left: 4px solid #ff69b4; }
+        a { color: #ff69b4; text-decoration: none; font-weight: bold; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>📚 La tua Raccolta di Errori</h1>
+        <p>Qui trovi tutti gli esercizi in cui hai sbagliato la risposta. Puoi riprovarli per allenarti!</p>
+        
+        {% if errori %}
+            <ul>
+                {% for errore in errori %}
+                    <li>
+                        <strong>{{ errore.titolo_lezione }}</strong><br>
+                        <a href="/topic/{{ errore.topic_id }}">Riprova questo argomento →</a>
+                    </li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p>🎉 Fantastico! Non hai ancora sbagliato nessun esercizio.</p>
+        {% endif %}
+        
+        <br>
+        <p><a href="/">← Torna alla Home</a></p>
+    </div>
+</body>
+</html>
