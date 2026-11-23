@@ -199,7 +199,8 @@ def check():
 @app.route("/errori")
 @login_required
 def errori():
-    miei_errori = Errore.query.filter_by(user_id=current_user.id).all()
+    # Prende gli errori, raggruppati per topic_id (senza duplicati)
+    miei_errori = Errore.query.filter_by(user_id=current_user.id).group_by(Errore.topic_id).all()
     return render_template("errori.html", errori=miei_errori)
 
 # Creazione del database all'avvio
