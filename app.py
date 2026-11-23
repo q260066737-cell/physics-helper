@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request, redirect, url_for, flash
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager, UserMixin, login_user, login_required, logout_user, current_user
+from flask_bcrypt import Bcrypt
 import os
 
 app = Flask(__name__)
@@ -9,6 +10,7 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 db = SQLAlchemy(app)
+bcrypt = Bcrypt(app)  # <-- AGGIUNTO PER LA SICUREZZA
 login_manager = LoginManager()
 login_manager.init_app(app)
 login_manager.login_view = 'login'
@@ -132,7 +134,8 @@ def login():
         username = request.form['username']
         password = request.form['password']
         user = User.query.filter_by(username=username).first()
-        if user and user.password == password:
+        # Usiamo bcrypt per controllare la password criptata
+        if user and bcrypt.check_password_hash(user.password, password):
             login_user(user)
             return redirect(url_for('home'))
         else:
@@ -148,7 +151,9 @@ def register():
         if user_exists:
             flash('Questo nome utente esiste già.')
         else:
-            new_user = User(username=username, password=password)
+            # Criptiamo la password prima di salvarla
+            hashed_password = bcrypt.generate_password_hash(password).decode('utf-8')
+            new_user = User(username=username, password=hashed_password)
             db.session.add(new_user)
             db.session.commit()
             login_user(new_user)
