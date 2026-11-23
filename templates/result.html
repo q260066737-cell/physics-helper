@@ -3,11 +3,11 @@
 <head>
     <title>Risultato</title>
     <style>
-        body { font-family: 'Segoe UI', sans-serif; margin: 0; padding: 40px 20px; background-image: url('{{ url_for('static', filename='bg-result.jpg') }}'); background-size: cover; background-position: center; background-attachment: fixed; color: white; }
-        .container { max-width: 600px; margin: 0 auto; background: rgba(15, 10, 20, 0.85); padding: 30px; border-radius: 15px; border: 1px solid rgba(255, 105, 180, 0.3); box-shadow: 0 0 20px rgba(255, 105, 180, 0.2); text-align: center; }
-        a { color: #ff69b4; text-decoration: none; font-weight: bold; }
-        .btn-prosegui { display: inline-block; background-color: #ff69b4; color: white; padding: 12px 24px; border-radius: 5px; margin-top: 20px; }
-        .btn-prosegui:hover { background-color: #ff1493; text-decoration: none;}
+        body { font-family: 'Segoe UI', sans-serif; margin: 0; padding: 40px 20px; background-image: url('{{ url_for('static', filename='bg-result.jpg') }}'); background-size: cover; background-position: center; background-attachment: fixed; color: #3e2723; }
+        .container { max-width: 600px; margin: 0 auto; background: rgba(222, 184, 135, 0.6); padding: 30px; border-radius: 15px; border: 3px solid #5d4037; box-shadow: 0 0 20px rgba(93, 64, 55, 0.4); text-align: center; }
+        a { color: #5d4037; text-decoration: none; font-weight: bold; }
+        .btn-prosegui { display: inline-block; background-color: #5d4037; color: white; padding: 12px 24px; border-radius: 5px; margin-top: 20px; }
+        .btn-prosegui:hover { background-color: #3e2723; text-decoration: none;}
     </style>
 </head>
 <body>
@@ -20,15 +20,14 @@
             <p>La risposta corretta è: <strong>{{ topic.answer }}</strong></p>
             
             {% if topic.feedback %}
-                <div style="background: rgba(255, 105, 180, 0.15); border-left: 4px solid #ff69b4; padding: 15px; margin-top: 20px; text-align: left; border-radius: 5px;">
+                <div style="background: rgba(255, 255, 255, 0.3); border-left: 4px solid #5d4037; padding: 15px; margin-top: 20px; text-align: left; border-radius: 5px;">
                     <strong>💡 Perché è sbagliato?</strong><br>
                     {{ topic.feedback }}
                 </div>
             {% endif %}
 
-            <!-- QUI AGGIUNGIAMO IL LINK ALLA RACCOLTA ERRORI -->
             <p style="margin-top: 20px;">
-                <a href="/errori" style="background: rgba(255, 105, 180, 0.2); padding: 10px 15px; border-radius: 5px; border: 1px solid #ff69b4;">
+                <a href="/errori" style="background: rgba(255, 255, 255, 0.3); padding: 10px 15px; border-radius: 5px; border: 2px solid #5d4037;">
                     📚 Vai alla tua raccolta di errori
                 </a>
             </p>
