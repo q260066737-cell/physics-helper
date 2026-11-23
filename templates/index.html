@@ -12,30 +12,33 @@
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
-            color: white;
+            color: #3e2723; /* Testo marrone molto scuro */
         }
 
-        /* Il riquadro principale scuro */
+        /* Il riquadro principale - RESO PIÙ TRASPARENTE */
         .container {
             max-width: 600px; 
             margin: 0 auto; 
-            background: rgba(15, 10, 20, 0.85);
+            background: rgba(222, 184, 135, 0.6); /* 0.6 = Più trasparente (vedi lo sfondo sotto) */
             padding: 30px;
             border-radius: 15px;
-            border: 1px solid rgba(255, 105, 180, 0.3);
-            box-shadow: 0 0 20px rgba(255, 105, 180, 0.2);
-            position: relative; /* Importante per posizionare il menu */
+            border: 3px solid #5d4037; /* Bordo marrone scuro */
+            box-shadow: 0 0 25px rgba(93, 64, 55, 0.4); 
+            position: relative; 
         }
 
-        h1 { margin-top: 0; }
-        a { color: #ff69b4; text-decoration: none; font-weight: bold; }
+        h1 { margin-top: 0; color: #3e2723; }
+        
+        /* Link generali */
+        a { color: #5d4037; text-decoration: none; font-weight: bold; }
         a:hover { text-decoration: underline; }
 
-        /* --- STILE PER I QUADRI (ACCORDION) --- */
+        /* --- QUADRI DEGLI ARGOMENTI --- */
         .category-box { margin-bottom: 15px; }
+        
         .category-title {
-            background: rgba(255, 105, 180, 0.15);
-            border: 2px solid #ff69b4;
+            background: rgba(255, 255, 255, 0.3); /* Un po' più trasparenti anche questi */
+            border: 2px solid #5d4037;
             border-radius: 10px;
             padding: 20px;
             font-size: 1.2em;
@@ -45,17 +48,25 @@
             justify-content: space-between;
             align-items: center;
             transition: background 0.3s;
+            color: #3e2723;
         }
-        .category-title:hover { background: rgba(255, 105, 180, 0.3); }
+        
+        .category-title:hover { background: rgba(255, 255, 255, 0.5); }
+        
         .topic-list { display: none; list-style-type: none; padding: 10px 0 0 0; margin: 0; }
+        
         .topic-list li { 
-            margin-bottom: 10px; background: rgba(255,255,255,0.1); 
-            padding: 15px; border-radius: 8px; border-left: 4px solid #ff69b4;
+            margin-bottom: 10px; 
+            background: rgba(255, 255, 255, 0.4); 
+            padding: 15px; 
+            border-radius: 8px; 
+            border-left: 4px solid #5d4037;
         }
-        .topic-list li a { font-size: 1.1em; display: block; color: white; }
-        .topic-list li a:hover { color: #ff69b4; }
+        
+        .topic-list li a { font-size: 1.1em; display: block; color: #3e2723; }
+        .topic-list li a:hover { color: #8d6e63; }
 
-        /* --- STILE PER IL MENU A TENDINA --- */
+        /* --- MENU A TENDINA --- */
         .menu-container {
             position: absolute;
             top: 20px;
@@ -63,9 +74,9 @@
         }
 
         .menu-button {
-            background: rgba(255, 105, 180, 0.2);
-            border: 1px solid #ff69b4;
-            color: white;
+            background: rgba(255, 255, 255, 0.3);
+            border: 2px solid #5d4037;
+            color: #3e2723;
             padding: 10px 15px;
             border-radius: 8px;
             cursor: pointer;
@@ -73,33 +84,33 @@
             font-family: inherit;
         }
 
-        .menu-button:hover { background: rgba(255, 105, 180, 0.4); }
+        .menu-button:hover { background: rgba(255, 255, 255, 0.5); }
 
         .menu-content {
-            display: none; /* Nascosto di default */
+            display: none;
             position: absolute;
             right: 0;
             top: 45px;
-            background: rgba(15, 10, 20, 0.95);
+            background: rgba(222, 184, 135, 0.95);
             min-width: 180px;
             border-radius: 8px;
-            border: 1px solid #ff69b4;
-            box-shadow: 0 8px 16px rgba(0,0,0,0.5);
+            border: 2px solid #5d4037;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.3);
             z-index: 10;
         }
 
         .menu-content a, .menu-content p {
-            color: white;
+            color: #3e2723;
             padding: 12px 16px;
             text-decoration: none;
             display: block;
             margin: 0;
-            border-bottom: 1px solid rgba(255,105,180,0.2);
+            border-bottom: 1px solid rgba(93, 64, 55, 0.2);
             font-size: 0.95em;
         }
 
-        .menu-content a:hover { background: rgba(255, 105, 180, 0.2); }
-        .menu-content a:last-child { border-bottom: none; color: #ff69b4; }
+        .menu-content a:hover { background: rgba(255, 255, 255, 0.3); }
+        .menu-content a:last-child { border-bottom: none; color: #8d6e63; font-weight: bold; }
 
         /* Togliamo i riquadri rossi */
         .flash-message { display: none; }
@@ -118,8 +129,6 @@
                 <a href="/logout">Esci</a>
             </div>
         </div>
-
-        <!-- QUI I MESSAGGI DI ERRORE SONO STATI NASCOSTI TRAMITE CSS -->
 
         <h1>Aiuto Fisica</h1>
         <p>Clicca su una categoria per vedere gli argomenti:</p>
@@ -173,7 +182,6 @@
 
     <!-- SCRIPT PER APRIRE E CHIUDERE I QUADRI E IL MENU -->
     <script>
-        // Funzione per aprire i quadri degli argomenti
         function toggleMenu(categoryId) {
             var menu = document.getElementById(categoryId);
             var arrow = document.getElementById('arrow-' + categoryId);
@@ -187,7 +195,6 @@
             }
         }
 
-        // Funzione per aprire il menu a tendina dell'utente
         function toggleUserMenu() {
             var menu = document.getElementById("userMenu");
             if (menu.style.display === "block") {
@@ -197,7 +204,6 @@
             }
         }
 
-        // Chiudi il menu se clicchi fuori
         window.onclick = function(event) {
             if (!event.target.matches('.menu-button')) {
                 var dropdowns = document.getElementsByClassName("menu-content");
